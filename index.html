@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GEAR-VLA | Anonymous Project Page</title>
+    <meta
+      name="description"
+      content="Anonymous CoRL 2026 project page for GEAR-VLA, a geometry-aware VLA framework for generalizable robotic manipulation."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="GEAR-VLA home">GEAR-VLA</a>
+      <nav aria-label="Primary navigation">
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#videos">Videos</a>
+        <a href="#release">Open Source</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-media" aria-label="Overview video">
+          <video
+            src="Video_for_GEAR_VLA.mp4"
+            controls
+            muted
+            playsinline
+            preload="metadata"
+          ></video>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Anonymous CoRL 2026 Submission</p>
+          <h1>Learning Geometry-Aware Action Representations for Generalizable Robotic Manipulation</h1>
+          <p class="lead">
+            GEAR-VLA unifies action, spatial, and embodiment representations so a VLA policy can
+            transfer across unseen objects, dense clutter, visual shifts, and different robot platforms.
+          </p>
+          <div class="hero-actions">
+            <a class="resource-button" href="https://arxiv.org/pdf/2606.08530" aria-label="arXiv coming soon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14 2H6.75A2.75 2.75 0 0 0 4 4.75v14.5A2.75 2.75 0 0 0 6.75 22h10.5A2.75 2.75 0 0 0 20 19.25V8l-6-6Z" />
+                <path d="M14 2v4.25A1.75 1.75 0 0 0 15.75 8H20" />
+                <path d="M8 17.5c2.4-3 3.85-6.1 4.35-9.3.65 3.4 2.25 6.45 4.8 9.15" />
+                <path d="M9 14.6c2.3-.85 4.6-.88 6.9-.1" />
+              </svg>
+              <span>arXiv</span>
+            </a>
+            <a class="resource-button" href="https://github.com/babynabeauty/GEAR-VLA" aria-label="Code coming soon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.12.68-3.78-1.33-3.78-1.33-.5-1.28-1.23-1.62-1.23-1.62-1.02-.7.08-.69.08-.69 1.12.08 1.7 1.15 1.7 1.15 1 .1.06 2.63.04 3.27.77.08 1.53.04 2.06-.35.1-.72.4-1.21.72-1.49-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.24 1.15-3.03-.12-.28-.5-1.43.11-2.99 0 0 .94-.3 3.1 1.16A10.75 10.75 0 0 1 12 6.16c.96 0 1.93.13 2.84.39 2.15-1.46 3.09-1.16 3.09-1.16.62 1.56.24 2.71.12 2.99.72.79 1.15 1.8 1.15 3.03 0 4.32-2.63 5.28-5.14 5.55.41.36.77 1.05.77 2.12v3.05c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z" />
+              </svg>
+              <span>Code</span>
+            </a>
+            <a class="resource-button" href="#release" aria-label="Dataset coming soon">
+              <span class="emoji-icon" aria-hidden="true">🤗</span>
+              <span>Dataset(coming soon)</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Key results">
+        <article>
+          <strong>85.9%</strong>
+          <span>success on AgileX bimanual manipulation</span>
+        </article>
+        <article>
+          <strong>81.0%</strong>
+          <span>success on LDT-01, unseen during pretraining</span>
+        </article>
+        <article>
+          <strong>90.1%</strong>
+          <span>success over 6,360 universal grasping trials</span>
+        </article>
+        <article>
+          <strong>212</strong>
+          <span>unseen objects in the grasping benchmark</span>
+        </article>
+      </section>
+
+      <section id="method" class="section method-section">
+        <div class="method-overview">
+          <div class="section-heading method-abstract">
+            <p class="eyebrow">Method</p>
+            <!-- <h2>A unified representation for manipulation generalization</h2> -->
+            <p>
+              Vision-Language-Action (VLA) models achieve strong benchmark performance but still
+              struggle in real-world deployment with unseen objects, background shifts, and different
+              robot embodiments. We argue that this stems from the lack of a unified geometry-aware
+              manipulation representation, leaving existing VLAs vulnerable to low-level trajectory
+              supervision, misaligned 3D features, and embodiment differences. To address this, we
+              propose GEAR-VLA, a VLA framework for learning unified geometry-aware action
+              representations for generalizable robotic manipulation. GEAR-VLA adopts coarse-to-fine
+              action learning, where multi-source embodied pretraining equips the VLM with embodied
+              reasoning and discrete action understanding before latent action tokens connect action
+              semantics to a gradient-decoupled DiT continuous action expert. It further performs
+              semantic-aligned 3D integration by aligning a trainable 3D spatial backbone with the VLA
+              representation while freezing the original VLM-aligned visual pathway. To share this
+              representation across robots, GEAR-VLA uses embodiment canonicalization, where
+              embodiment-aware states and embodiment-invariant actions confine robot differences to
+              the low-level interface. Extensive simulation and real-world experiments demonstrate
+              strong generalization: GEAR-VLA achieves state-of-the-art performance on LIBERO,
+              zero-shot LIBERO-Plus, and RoboTwin 2.0, reaches 85.9% success on AgileX and 81.0%
+              on the pretraining-unseen LDT-01 embodiment, and obtains 90.1% success on a 6,360-trial
+              universal grasping benchmark with 212 unseen objects. Code and models will be released.
+            </p>
+          </div>
+
+          <div class="method-figures">
+            <figure class="figure">
+              <img src="assets/figures/intro_final.png" alt="GEAR-VLA overview diagram" />
+              <figcaption>Overview: real-world appearance generalization, cross-embodiment transfer, and universal grasping.</figcaption>
+            </figure>
+            <!-- <figure class="figure">
+              <img src="assets/figures/framework_final.png" alt="GEAR-VLA framework diagram" />
+              <figcaption>Architecture: VLM backbone, 2D/3D visual pathways, latent action tokens, and continuous action expert.</figcaption>
+            </figure> -->
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <article>
+            <h3>Coarse-to-fine action learning</h3>
+            <p>
+              Embodied pretraining teaches discrete action semantics before a gradient-decoupled DiT
+              expert maps representations to continuous action chunks.
+            </p>
+          </article>
+          <article>
+            <h3>Semantic-aligned 3D integration</h3>
+            <p>
+              A trainable 3D spatial backbone aligns geometry-aware tokens with the VLA representation
+              while preserving the VLM-aligned visual pathway.
+            </p>
+          </article>
+          <article>
+            <h3>Embodiment canonicalization</h3>
+            <p>
+              Embodiment-aware states and embodiment-invariant actions make the representation portable
+              across different robot morphologies.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- <section id="results" class="section results-section">
+        <div class="section-heading compact">
+          <p class="eyebrow">Results</p>
+          <h2>Strong real-world transfer across platforms and tasks</h2>
+        </div>
+        <div class="figure-grid">
+          <figure class="figure">
+            <img src="assets/figures/realWorldExp.png" alt="Real-world bimanual manipulation success rates" />
+            <figcaption>Bimanual T-shirt folding, shorts folding, and parcel flipping results on AgileX and LDT-01.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/figures/grasping_anything.png" alt="Universal grasping examples" />
+            <figcaption>Universal grasping examples across sparse and dense scenes with unseen objects.</figcaption>
+          </figure>
+        </div>
+      </section> -->
+
+      <section id="videos" class="section video-section">
+        <div class="section-heading">
+          <p class="eyebrow">Real-Robot Videos</p>
+        </div>
+
+        <div id="video-root" class="video-root" aria-live="polite"></div>
+      </section>
+
+      <section id="release" class="section release-section">
+        <div>
+          <p class="eyebrow">Open Source</p>
+          <h2>Code and models will be released</h2>
+          <p>
+            The implementation, model checkpoints, and evaluation assets will be released publicly
+            in this repository after the review-compatible release point.
+          </p>
+        </div>
+        <div class="release-panel">
+          <span>Planned release</span>
+          <strong>Training code · model checkpoints · evaluation scripts · demo assets</strong>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>GEAR-VLA</span>
+      <span>Anonymous project page for double-blind review.</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
