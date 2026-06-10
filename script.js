@@ -196,6 +196,12 @@ const root = document.querySelector("#video-root");
 const PLAYBACK_RATE = 3;
 
 function setVideoSpeed(video) {
+  if (video.dataset.playbackRate === "1") {
+    video.defaultPlaybackRate = 1;
+    video.playbackRate = 1;
+    return;
+  }
+
   video.defaultPlaybackRate = PLAYBACK_RATE;
   video.playbackRate = PLAYBACK_RATE;
   video.addEventListener("loadedmetadata", () => {
